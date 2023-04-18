@@ -20,7 +20,7 @@ public class myArrayList<T> implements myList<T> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -35,22 +35,42 @@ public class myArrayList<T> implements myList<T> {
 
     @Override
     public void add(T item) {
-        add(item, size);
+        if (size == elements.length) {
+            Object[] newElements = new Object[elements.length * 2]; // If the array is full, create a new array with double the size
+            System.arraycopy(elements, 0, newElements, 0, elements.length);
+            elements = newElements;
+        }
+        elements[size] = item;
+        size++;
     }
 
     @Override
     public void add(T item, int index) {
-        if(index < 0 || index > size ){
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        if(size == elements.length){ //Check if the array is large enough to accommodate the new element
-            Object[] newElements = new Object[elements.length * 2]; //Create a new array  with double the size of the original array
-            System.arraycopy(elements, 0, newElements, 0, size); // Copy over the elements from the original array
-            elements = newElements; //Update the new array
+        if (size == elements.length) {
+            Object[] newElements = new Object[elements.length * 2];
+            System.arraycopy(elements, 0, newElements, 0, elements.length); // If the array is full, create a new array with double the size
+            elements = newElements;
         }
-        System.arraycopy(elements, index, elements, index+1, size - index);
+        System.arraycopy(elements, index, elements, index + 1, size - index); // Shift elements to the right to make space for the new element
         elements[index] = item;
         size++;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(elements[i]);
+            if (i < size - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override
@@ -66,13 +86,14 @@ public class myArrayList<T> implements myList<T> {
 
     @Override
     public T remove(int index) {
-        if(index < 0 || index >= size){
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         T removedItem = (T) elements[index];
-        System.arraycopy(elements, index+1,elements,index, size - index);
-        elements[size - 1] = null;
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
+        elements[size - 1] = null; // Set the last element to null
         size--;
+
         return removedItem;
     }
 
