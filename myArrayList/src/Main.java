@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         myArrayList<Integer> myList = new myArrayList<>();
+
         myList.add(1);
         myList.add(2);
         myList.add(3);
