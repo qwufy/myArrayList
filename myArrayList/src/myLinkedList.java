@@ -151,27 +151,77 @@ public class myLinkedList<T> implements myList<T> {
 
     @Override
     public void clear() {
-
+        head = null;
+        tail = null;
+        size = 0;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Index is empty or full.");
+        }
+        Node currentNode;
+        if (index <= size / 2){
+            currentNode = head;
+            for (int i = 0; i < index; i++){
+                currentNode = currentNode.next;
+            }
+        }
+        else{
+            currentNode = tail;
+            for (int i = size; i > index; i--){
+                currentNode = currentNode.previous;
+            }
+        }
+        return currentNode.element;
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        Node currentNode = head;
+        for (int index = 0; index < size; index++) {
+            if (currentNode.element.equals(o)) {
+                return index;
+            }
+            currentNode = currentNode.next;
+        }
+        return -1;
     }
 
     @Override
     public int lastIndex(Object o) {
-        return 0;
+        Node currentNode = tail;
+        for (int index = size - 1; index >= 0; index--) {
+            if (currentNode.element.equals(o)) {
+                return index;
+            }
+            currentNode = currentNode.previous;
+        }
+        return -1;
     }
 
     @Override
     public void sort() {
-
+        if (size <= 1) {
+            // Already sorted or empty list, no need to sort
+            return;
+        }
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = head;
+            while (current != null && current.next != null) {
+                if (((Comparable<T>) current.element).compareTo(current.next.element) > 0) {
+                    // Swap elements in nodes
+                    T temp = current.element;
+                    current.element = current.next.element;
+                    current.next.element = temp;
+                    swapped = true;
+                }
+                current = current.next;
+            }
+        } while (swapped);
     }
-
 }
+
