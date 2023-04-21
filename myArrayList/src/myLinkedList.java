@@ -14,7 +14,7 @@ public class myLinkedList<T> implements myList<T> {
     private Node tail;
     private int size;
 
-    private myLinkedList(){
+    myLinkedList(){
         head = null;
         tail = null;
         size = 0;
@@ -38,7 +38,7 @@ public class myLinkedList<T> implements myList<T> {
     @Override
     public void add(T item) {
         Node newNode = new Node(item);
-        if(head == null){
+        if (head == null){
             head = newNode;
             tail = newNode;
         }
