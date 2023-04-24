@@ -45,6 +45,17 @@ public class myArrayList<T> implements myList<T> {
     }
 
     @Override
+    public void add(int index) {
+        if (size < 0 || size <= index){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        for(int i = 0; i < size; i++){
+            elements[i] = elements[index];
+        }
+        size++;
+    }
+
+    @Override
     public void add(T item, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index out of bounds");

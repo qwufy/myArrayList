@@ -2,6 +2,7 @@
 public interface myList<T> {
     int size();
     boolean contains(Object o);
+    void add(int index);
     void add(T item);
     void add(T item, int index);
     boolean remove(T item);

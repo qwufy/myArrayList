@@ -51,6 +51,14 @@ public class myLinkedList<T> implements myList<T> {
     }
 
     @Override
+    public void add(int index) {
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+    }
+
+    @Override
     public void add(T item, int index) {
         if(index < 0 || index > size){
             throw new IndexOutOfBoundsException("Index out of bounds");
