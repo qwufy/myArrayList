@@ -1,6 +1,9 @@
 import java.util.EmptyStackException;
 import myArrayList.MyArrayList; // if implementing MyArrayListStack
 import myLinkedList.MyLinkedList; // if implementing MyLinkedListStack
+
+import static sun.util.locale.LocaleUtils.isEmpty;
+
 public class myLinkedListStack {
     private myLinkedList list;
 
@@ -18,4 +21,14 @@ public class myLinkedListStack {
         }
         return list.getFirst();
     }
+
+    public int size(){
+        return list.size();
+    }
+}
+
+public class myArrayListStack{
+    private myArrayList list;
+
+
 }
