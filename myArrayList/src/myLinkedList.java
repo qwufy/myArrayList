@@ -238,28 +238,5 @@ public class myLinkedList<T> implements myList<T> {
             }
         } while (swapped);
     }
-
-    public static <T> Iterator<T> iterator() {
-        return new myLinkedListIterator();
-    }
-
-    private class myLinkedListIterator implements Iterator<E>{
-        private Node<E> current = head;
-
-
-        @Override
-        public boolean hasNext() {
-            return current != null;
-        }
-
-        @Override
-        public E next() {
-            if(!hasNext()){
-                throw new NoSuchFieldException();
-            }
-            E element = current.element;
-            current = current.next;
-        }
-    }
 }
 
