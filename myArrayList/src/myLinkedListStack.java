@@ -1,36 +1,24 @@
 import java.util.EmptyStackException;
-import java.util.LinkedList;
 
-public class myLinkedListStack<E> {
-    private myLinkedList<E> stack;
+public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
+    private linkedList<T> linkedList;
 
-    public myLinkedListStack(){
-        stack = new myLinkedList<>();
+    linkedList(){
+        linkedList = new linkedList<>();
     }
 
-    public void push(E element){
-        stack.add(element, 0);
+    @Override
+    public void push(T element){
+        linkedList.addFirst(element);
     }
 
-    public E pop() {
-        if (stack.isEmpty()){
+    @Override
+    public T pop(){
+        if(isEmpty()) {
             throw new EmptyStackException();
         }
-        return stack.remove(0);
+        return linkedList.removeFirst();
     }
 
-    public E peek(){
-        if (isEmpty()){
-            throw new EmptyStackException();
-        }
-        return stack.get(0);
-    }
 
-    public boolean isEmpty(){
-        return stack.isEmpty();
-    }
-
-    public int size(){
-        return stack.size();
-    }
 }
