@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.EmptyStackException;
+import java.util.Iterator;
 
 public class myArrayListStack<T> implements StackList<T>, Iterable<T>{
     private ArrayList<T> arrayList;
@@ -37,5 +38,10 @@ public class myArrayListStack<T> implements StackList<T>, Iterable<T>{
     @Override
     public int size(){
         return arrayList.size();
+    }
+
+    @Override
+    public Iterator<T> iterator(){
+        return arrayList.iterator();
     }
 }
