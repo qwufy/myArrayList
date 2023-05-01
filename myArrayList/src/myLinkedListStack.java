@@ -2,15 +2,16 @@ import java.util.EmptyStackException;
 import java.util.Iterator;
 
 public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
-    private linkedList<T> linkedList;
+    private myLinkedList<T> linkedList;
 
-    myLinkedListStack(){
+    public myLinkedListStack() {
         linkedList = new linkedList<>();
     }
 
+
     @Override
     public void push(T element){
-        linkedList.addFirst(element);
+        linkedList.add(element,0);
     }
 
     @Override
@@ -18,7 +19,7 @@ public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
         if(isEmpty()) {
             throw new EmptyStackException();
         }
-        return linkedList.removeFirst();
+        return linkedList.remove(0);
     }
 
     @Override
@@ -26,7 +27,7 @@ public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
         if(isEmpty()){
             throw new EmptyStackException();
         }
-        return linkedList.getFirst();
+        return linkedList.get(0);
     }
 
     @Override
@@ -41,6 +42,6 @@ public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
 
     @Override
     public Iterator<T> iterator(){
-        return linkedList.iterator();
+        return myLinkedList.iterator();
     }
 }
