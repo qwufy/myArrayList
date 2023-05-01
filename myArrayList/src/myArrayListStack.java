@@ -29,4 +29,13 @@ public class myArrayListStack<T> implements StackList<T>, Iterable<T>{
         return  arrayList.get(size()-1);
     }
 
+    @Override
+    public boolean isEmpty(){
+        return arrayList.isEmpty();
+    }
+
+    @Override
+    public int size(){
+        return arrayList.size();
+    }
 }
