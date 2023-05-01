@@ -20,5 +20,14 @@ public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
         return linkedList.removeFirst();
     }
 
+    @Override
+    public T peek(){
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
+        return linkedList.getFirst();
+    }
 
+    @Override
+    public boolean isEmpty(){}
 }
