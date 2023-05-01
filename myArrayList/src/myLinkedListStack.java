@@ -1,4 +1,6 @@
 import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.Iterator;
 
 public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
     private linkedList<T> linkedList;
@@ -29,5 +31,17 @@ public class myLinkedListStack<T> implements StackList<T>, Iterable<T> {
     }
 
     @Override
-    public boolean isEmpty(){}
+    public boolean isEmpty(){
+        return linkedList.isEmpty();
+    }
+
+    @Override
+    public int size(){
+        return linkedList.size();
+    }
+
+    @Override
+    public Iterator<T> iterator(){
+        return linkedList.iterator();
+    }
 }
