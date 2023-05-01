@@ -21,4 +21,12 @@ public class myArrayListStack<T> implements StackList<T>, Iterable<T>{
         return arrayList.remove(size()-1);
     }
 
+    @Override
+    public T peek(){
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
+        return  arrayList.get(size()-1);
+    }
+
 }
