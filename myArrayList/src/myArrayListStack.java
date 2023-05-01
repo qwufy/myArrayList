@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class myArrayListStack {
     private myArrayList<Integer> list;
 
@@ -8,4 +10,6 @@ public class myArrayListStack {
     public void push(int value){
         list.add(value);
     }
+
+
 }
