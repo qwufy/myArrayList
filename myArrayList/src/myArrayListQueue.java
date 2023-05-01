@@ -25,4 +25,12 @@ public class myArrayListQueue<T> {
         }
         return list.get(0);
     }
+
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
+
+    public int size(){
+        return list.size();
+    }
 }
