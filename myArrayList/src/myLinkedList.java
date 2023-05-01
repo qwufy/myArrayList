@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class myLinkedList<T> implements myList<T> {
 
@@ -7,7 +8,18 @@ public class myLinkedList<T> implements myList<T> {
         return isEmpty();
     }
 
+    public void addFirst(int value) {
+    }
+
+    public int getFirst() {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        return head.value;
+    }
+
     private class Node{
+        public int value;
         private T element;
         private Node next;
         private Node previous;
